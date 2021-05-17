@@ -1,19 +1,19 @@
-module.exports = app => {
-  const joueurs = require("../controllers/joueurs.controller.js");
+var router = require('express').Router();
+const joueurs = require("../controllers/joueurs.controller.js");
 
-  // Create a new Joueur
-  app.post("/joueurs", joueurs.create);
- 
-  // Retrieve all Joueur
-  app.get("/joueurs", joueurs.findAll);
+// Create a new Joueur
+router.post("/", joueurs.create);
 
-   // Retrieve a single Joueur with idJoueur
-  app.get("/joueurs/:idJoueur", joueurs.findOne);
+// Retrieve all Joueur
+router.get("/", joueurs.findAll);
 
-  // Update a Joueur with idJoueur
-  app.put("/joueurs/:idJoueur", joueurs.update);
+ // Retrieve a single Joueur with idJoueur
+ router.get("/:idJoueur", joueurs.findOne);
 
-  // Delete a Joueur with idJoueur
-  app.delete("/joueurs/:idJoueur", joueurs.delete);
+// Update a Joueur with idJoueur
+router.put("/:idJoueur", joueurs.update);
 
-};
+// Delete a Joueur with idJoueur
+router.delete("/:idJoueur", joueurs.delete);
+
+module.exports = router;

@@ -1,20 +1,24 @@
-module.exports = app => {
+    var router = require('express').Router();
     const equipes = require("../controllers/equipes.controller.js");
   
     // Create a new equipe
-    app.post("/equipes", equipes.create);
+    router.post("/", equipes.create);
    
     // Retrieve all equipe
-    app.get("/equipes", equipes.findAll);
+    router.get("/", equipes.findAll);
+
+    // Retrieve last joueur
+    router.get("/last", equipes.findLast);
   
-     // Retrieve a single equipe with idEquipe
-    app.get("/equipes/:idEquipe", equipes.findOne);
+  
+     // Retrieve all player equipe with idEquipe
+    router.get("/:idEquipe", equipes.findOne);
   
     // Update a equipe with idEquipe
-    app.put("/equipes/:idEquipe", equipes.update);
+    router.put("/:idEquipe", equipes.update);
   
     // Delete a equipe with idEquipe
-    app.delete("/equipes/:idEquipe", equipes.delete);
-  
-  };
-  
+    router.delete("/:idEquipe", equipes.delete);
+
+
+    module.exports = router;

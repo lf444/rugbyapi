@@ -19,19 +19,18 @@ Equipe.create = (newEquipe, result) => {
 };
 
 Equipe.findById = (idEquipe, result) => {
-  sql.query(`SELECT * FROM EQUIPE WHERE idEquipe = ${idEquipe}`, (err, res) => {
+  sql.query(`SELECT JOUEUR.idJoueur, nom, prenom, poste, ADDDATE(MAX(dateBlessure), INTERVAL tempsRepos DAY) as dateFinBlessure
+  FROM JOUEUR, BLESSURE
+  WHERE JOUEUR.idEquipe= ${idEquipe}
+  AND JOUEUR.idJoueur = BLESSURE.idJoueur
+  GROUP BY JOUEUR.idJoueur`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
       return;
     }
-    if (res.length) {
-      console.log("found customer: ", res[0]);
-      result(null, res[0]);
-      return;
-    }
-    // not found Customer with the id
-    result({ kind: "not_found" }, null);
+    console.log("Equipe: ", res);
+    result(null, res);
   });
 }; 
 
@@ -42,7 +41,19 @@ Equipe.getAll = result => {
       result(null, err);
       return;
     }
-    console.log("Joueurs: ", res);
+    console.log("Equipe: ", res);
+    result(null, res);
+  });
+};
+
+Equipe.getLast = result => {
+  sql.query("SELECT idJoueur FROM JOUEUR ORDER BY idJoueur DESC LIMIT 1", (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("Equipe: ", res);
     result(null, res);
   });
 };
@@ -81,10 +92,10 @@ Equipe.remove = (idEquipe, result) => {
       result({ kind: "not_found" }, null);
       return;
     }
-    console.log("deleted joueur with idEquipe: ", idEquipe);
+    console.log("deleted Equipe with idEquipe: ", idEquipe);
     result(null, res);
   });
 };
 
 
-module.exports = Joueur;
+module.exports = Equipe;

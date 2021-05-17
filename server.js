@@ -13,8 +13,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 }); */
+/* 
+require("./routes/joueurs.routes.js")(app); */
 
-require("./routes/joueurs.routes.js")(app);
+app.use('/joueurs', require('./routes/joueurs.routes'));
+app.use('/equipes', require('./routes/equipes.routes'));
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;

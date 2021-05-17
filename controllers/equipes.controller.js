@@ -53,6 +53,19 @@ exports.findOne = (req, res) => {
   });
 };
 
+// Retrieve all Equipe from the database.
+exports.findLast = (req, res) => {
+  Equipe.getLast((err, data) => {
+  if (err)
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving Equipe."
+    });
+  else res.send(data);
+});
+};
+
+
  // Update a Equipe identified by the idEquipein the request
 exports.update = (req, res) => {
   // Validate Request
