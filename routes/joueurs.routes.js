@@ -4,6 +4,10 @@ const joueurs = require("../controllers/joueurs.controller.js");
 // Create a new Joueur
 router.post("/", joueurs.create);
 
+// Create a new blessure
+router.post("/:idJoueur/blessure", joueurs.createBlessure);
+
+
 // Retrieve all Joueur
 router.get("/", joueurs.findAll);
 
