@@ -38,7 +38,7 @@ Perf.getAll = (idJoueur, result) => {
 }; 
 
 Perf.findById = (idJoueur, result) => {
-  sql.query(`SELECT * FROM HISTORIQUE_PERF WHERE idJoueur = ${idJoueur} ORDER BY datePerf DESC LIMIT 1`, (err, res) => {
+  sql.query(`SELECT * FROM HISTORIQUE_PERF WHERE idJoueur = ${idJoueur} ORDER BY idPerf DESC LIMIT 1`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);

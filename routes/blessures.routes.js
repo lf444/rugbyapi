@@ -7,8 +7,8 @@ router.post("/:idJoueur/", blessures.create);
 // Retrieve all blessure
 router.get("/:idJoueur/", blessures.findAll);
 
- // Retrieve a single blessure with idblessure
- router.get("/:idJoueur/blessure/:idBlessure", blessures.findOne);
+// Retrieve a single blessure with idblessure
+router.get("/:idJoueur/blessure/:idBlessure", blessures.findOne);
 
 // Update a blessure with idblessure
 router.put("/:idJoueur/", blessures.update);

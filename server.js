@@ -23,6 +23,7 @@ app.use('/equipes', require('./routes/equipes.routes'));
 app.use('/blessures', require('./routes/blessures.routes.js'));
 app.use('/perfomances', require('./routes/perf.routes.js'));
 app.use('/tp', require('./routes/taillePoids.routes.js'));
+app.use('/evenements', require('./routes/evenements.routes.js'));
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
