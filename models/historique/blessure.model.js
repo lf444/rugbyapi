@@ -24,7 +24,7 @@ Blessure.create = (newBlessure, result) => {
 
 
 Blessure.findById = (idJoueur, result) => {
-  sql.query(`SELECT * FROM HISTORIQUE_BLESSURE WHERE idJoueur = ${idJoueur}`, (err, res) => {
+  sql.query(`SELECT * FROM HISTORIQUE_BLESSURE WHERE idJoueur = ${idJoueur} ORDER BY dateBlessure DESC `, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);

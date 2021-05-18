@@ -21,6 +21,8 @@ app.get("/", (req, res) => {
 app.use('/joueurs', require('./routes/joueurs.routes'));
 app.use('/equipes', require('./routes/equipes.routes'));
 app.use('/blessures', require('./routes/blessures.routes.js'));
+app.use('/perfomances', require('./routes/perf.routes.js'));
+app.use('/tp', require('./routes/taillePoids.routes.js'));
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
