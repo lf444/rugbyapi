@@ -35,7 +35,7 @@ TP.getAll = (idJoueur, result) => {
 }; 
 
 TP.findById = (idJoueur, result) => {
-  sql.query(`SELECT * FROM HISTORIQUE_TAILLE_POIDS WHERE  idJoueur = ${idJoueur} ORDER BY dateTaillePoids DESC LIMIT 1`, (err, res) => {
+  sql.query(`SELECT * FROM HISTORIQUE_TAILLE_POIDS WHERE  idJoueur = ${idJoueur} ORDER BY idTaillePoids DESC LIMIT 1`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);

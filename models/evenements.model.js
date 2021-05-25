@@ -33,4 +33,20 @@ Evenement.getAll = result => {
     });
 };
 
+Evenement.remove = (idEvenement, result) => {
+    sql.query("DELETE FROM EVENEMENT WHERE idEvenement = ?", idEvenement, (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+            return;
+        }
+        if (res.affectedRows == 0) {
+            result({ kind: "not_found" }, null);
+            return;
+        }
+        console.log("deleted Evenement with idEvenement: ", idEvenement);
+        result(null, res);
+    });
+};
+
 module.exports = Evenement;

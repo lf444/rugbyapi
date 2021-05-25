@@ -7,4 +7,7 @@ router.post("/", evenements.create);
 // Retrieve all evenement
 router.get("/", evenements.findAll);
 
+// Delete an evenement with idEvenement
+router.delete("/:idEvenement", evenements.delete);
+
 module.exports = router;

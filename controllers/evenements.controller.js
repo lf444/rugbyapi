@@ -38,3 +38,20 @@ exports.findAll = (req, res) => {
     else res.send(data);
   });
 };
+
+// Delete a Evenement with the specified idEvenement in the request
+exports.delete = (req, res) => {
+  Evenement.remove(req.params.idEvenement, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found Evenement with id ${req.params.idEvenement}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Could not delete Evenement with id " + req.params.idEvenement
+        });
+      }
+    } else res.send({ message: `Evenement was deleted successfully!` });
+  });
+};
