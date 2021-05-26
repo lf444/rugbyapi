@@ -11,6 +11,7 @@ exports.create = (req, res) => {
   // Create a Equipe
   const equipe = new Equipe({
     nom: req.body.nom,
+    image: req.body.image
   });
 
   // Save Equipe in the database
