@@ -4,6 +4,7 @@ const sql = require("./db.js");
 const Equipe = function(equipe) {
   this.idEquipe = equipe.idEquipe;
   this.nom = equipe.nom;
+  this.image = equipe.image;
 };
 
 Equipe.create = (newEquipe, result) => {
